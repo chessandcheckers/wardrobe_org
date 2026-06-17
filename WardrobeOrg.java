@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class wardrobe_org {
+public class WardrobeOrg {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String rec;
