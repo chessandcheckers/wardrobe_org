@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class WardrobeOrg {
@@ -5,6 +7,8 @@ public class WardrobeOrg {
         Scanner sc = new Scanner(System.in);
         String itemName;
         int score = 0;
+        String rec;
+        String reasons = "";
 
         System.out.println("Enter item: ");
         itemName = sc.nextLine();
@@ -22,24 +26,53 @@ public class WardrobeOrg {
         String style = sc.nextLine();
         
 
-        if(worn.equalsIgnoreCase("y"))
+        if(worn.equalsIgnoreCase("y")){
             score += 3;
-        if(fit.equalsIgnoreCase("y"))
+            reasons += "- Worn recently\n";
+        }
+        if(fit.equalsIgnoreCase("y")){
             score += 3;
-        if(like.equalsIgnoreCase("y"))
+            reasons += "- Fits well\n";
+        }
+        if(like.equalsIgnoreCase("y")){
             score += 3;
-        if(style.equalsIgnoreCase("y"))
+            reasons += "- Enjoys wearing it\n";
+        }
+        if(style.equalsIgnoreCase("y")){
             score += 4;
+            reasons += "- Versatile styling options\n";
+        }
         
+        System.out.println("\n");
         System.out.println("Item: " + itemName);
         System.out.println("Final Score: " + score);
+        System.out.println("Reasons: \n" + reasons);
 
         if(score >= 8)
-            System.out.println("Recommendation: KEEP");
+            rec =  "KEEP";
         else if(score >= 5)
-            System.out.println("Recommendation: MAYBE");
+            rec = "MAYBE";
         else 
-            System.out.println("Recommendation: DONATE");
+            rec = "DONATE";
+        System.out.println("Recommendation: " + rec + "\n");
+
+
+        try (FileWriter writer = new FileWriter("wardrobe_data.txt", true)) {
+    
+            writer.write(
+                "Item: " + itemName + "\n" +
+                "Score: " + score + "\n" +
+                "Reasons:\n" + reasons + "\n" +
+                "Recommendation: " + rec + "\n" + 
+                "----------------------------------------\n"
+            );
+
+        } catch (IOException e) {
+            System.out.println("Error saving file.");
+        }
+        finally{
+            System.out.println("Data saved successfully!");
+        }
         
         sc.close();
     }
