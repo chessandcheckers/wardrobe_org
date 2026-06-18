@@ -37,6 +37,11 @@ output based on the user's experience and score the how strongly the output is s
 - Added a `.gitignore` file to prevent compiled `.class` files from being tracked.
 - Successfully synchronized local and GitHub versions of the project.
 - Planned future features including reason reports, file storage, wardrobe history, and item search.
+
+**18-06-26**
+
+- Added reason report
+- Added file storage
 ---
 
 ## What the Project tracks
