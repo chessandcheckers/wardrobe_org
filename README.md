@@ -42,6 +42,10 @@ output based on the user's experience and score the how strongly the output is s
 
 - Added reason report
 - Added file storage
+
+**19-06-26**
+
+- Added support for evaluating multiple items
 ---
 
 ## What the Project tracks
