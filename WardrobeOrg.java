@@ -1,13 +1,27 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class WardrobeOrg {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void viewHistory(){
+        System.out.println("\n=======WARDROBE HISTORY=======\n");
+
+        try (BufferedReader br = new BufferedReader(new FileReader("wardrobe_data.txt"))){
+            String line;
+            while((line = br.readLine()) != null){
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file.");
+        }
+    }
+
+    public static void evaluateItems(Scanner sc) { 
         String itemName;
         String anotherItem;
-        do { 
+        do{
             int score = 0;
             String rec;
             String reasons = "";
@@ -81,8 +95,32 @@ public class WardrobeOrg {
                 System.out.println("\n----------------------------------------\n");
             
         } while (anotherItem.equalsIgnoreCase("y"));
+    }
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("========================");
+        System.out.println("WARDROBE ORGANIZER");
+        System.out.println("========================");
+        System.out.println("1. Evaluate item\n2. View wardrobe history\n3. Exit\n");
+        System.out.println("Choose an option: ");
+        int ch = Integer.parseInt(sc.nextLine());
+
+        switch (ch) {
+            case 1:
+                evaluateItems(sc);
+                break;
+            case 2:
+                viewHistory();
+                break;
+            case 3:
+                System.out.println("Bye!");
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+
+        System.out.println("Thank you for using Wardrobe Organizer!");  
         sc.close();
-        System.out.println("Thank you for using Wardrobe Organizer!");
     }
 }

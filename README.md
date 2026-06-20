@@ -46,6 +46,14 @@ output based on the user's experience and score the how strongly the output is s
 **19-06-26**
 
 - Added support for evaluating multiple items
+
+**20-06-26**
+
+- Implemented file-based wardrobe history tracking
+- Refactored the project into separate methods (`evaluateItems()` and `viewHistory()`, improving code organization and maintainability
+- Added support for reading previously evaluated clothing items from storage and displaying them within the application
+- Continued strengthening understanding of Java file handling, exception handling, and program structure.
+
 ---
 
 ## What the Project tracks
