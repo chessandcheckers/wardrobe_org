@@ -1,5 +1,5 @@
 public class ClothingItem {    
-    String name;
+    String itemName;
     int score;
     String rec;
     String reasons;

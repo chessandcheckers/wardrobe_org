@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WardrobeOrg {
@@ -18,17 +19,15 @@ public class WardrobeOrg {
         }
     }
 
+    static ArrayList<ClothingItem> wardrobe = new ArrayList<>();
     public static void evaluateItems(Scanner sc) { 
-        String itemName;
         String anotherItem;
         do{
             ClothingItem item = new ClothingItem();
-            item.itemName = itemName;
-            item.score = score;
-            item.rec = rec;
-            item.reasons = reasons;
 
-
+            int score = 0;
+            String rec;
+            String reasons = "";
 
             System.out.println("Enter item: ");
             item.itemName = sc.nextLine();
@@ -63,11 +62,6 @@ public class WardrobeOrg {
                 reasons += "- Versatile styling options\n";
             }
             
-            System.out.println("\n");
-            System.out.println("Item: " + itemName);
-            System.out.println("Final Score: " + score);
-            System.out.println("Reasons: \n" + reasons);
-
             if(score >= 8)
                 rec =  "KEEP";
             else if(score >= 5)
@@ -76,16 +70,29 @@ public class WardrobeOrg {
                 rec = "DONATE";
             System.out.println("Recommendation: " + rec + "\n");
 
+            item.score = score;
+            item.rec = rec;
+            item.reasons = reasons;
+
+            System.out.println("\n");
+            System.out.println("Item: " + item.itemName);
+            System.out.println("Final Score: " + item.score);
+            System.out.println("Reasons: \n" + item.reasons);
+            System.out.println("Recommendation: " + item.rec);
+
+            wardrobe.add(item);
 
             try (FileWriter writer = new FileWriter("wardrobe_data.txt", true)) {
         
                 writer.write(
-                    "Item: " + itemName + "\n" +
-                    "Score: " + score + "\n" +
-                    "Reasons:\n" + reasons + "\n" +
-                    "Recommendation: " + rec + "\n" + 
+                    "Item: " + item.itemName + "\n" +
+                    "Score: " + item.score + "\n" +
+                    "Reasons:\n" + item.reasons + "\n" +
+                    "Recommendation: " + item.rec + "\n" + 
                     "----------------------------------------\n"
                 );
+            
+                System.out.println("Items evaluated this session: " + wardrobe.size());
 
                 System.out.println("Data saved successfully!");
 
