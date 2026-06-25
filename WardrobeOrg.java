@@ -22,12 +22,16 @@ public class WardrobeOrg {
         String itemName;
         String anotherItem;
         do{
-            int score = 0;
-            String rec;
-            String reasons = "";
+            ClothingItem item = new ClothingItem();
+            item.itemName = itemName;
+            item.score = score;
+            item.rec = rec;
+            item.reasons = reasons;
+
+
 
             System.out.println("Enter item: ");
-            itemName = sc.nextLine();
+            item.itemName = sc.nextLine();
 
             System.out.println("Have you worn it in the last 1 year? (y/n): ");
             String worn = sc.nextLine();

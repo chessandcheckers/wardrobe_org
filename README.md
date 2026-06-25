@@ -54,6 +54,10 @@ output based on the user's experience and score the how strongly the output is s
 - Added support for reading previously evaluated clothing items from storage and displaying them within the application
 - Continued strengthening understanding of Java file handling, exception handling, and program structure.
 
+
+**25-06-26**
+
+-
 ---
 
 ## What the Project tracks
@@ -68,4 +72,3 @@ Through this project, I aim to:
 - Practise java and improve my OOP skills
 - Build a project that is actually useful to me
 - Maintain a database of clothing items I had and have to help me make better decisions over time
-
